@@ -1,0 +1,26 @@
+export const colors = {
+    black: '#35281F',
+    teal: '#007B81',
+    gray: '#968C83',
+    brown75: '#685E57',
+    brown45: '#A49E9A',
+    brown30: '#C3BFBC',
+    brown20: '#D7D4D2',
+    brown10: '#EBEAE9',
+    brown5: '#F5F4F3',
+    background: '#F5F4F3',
+    danger: '#B2042D',
+    dangerLight: '#FCE6EB',
+    white: '#FFFFFF',
+    teal20: '#CCE5E7',
+    teal5: '#F2F8F9',
+    teal45: '#8CC5C8',
+    success: '#1C7828',
+    successLight: '#EAF6EB',
+    caution: '#B58F06',
+    cautionLight: '#FCF7E6',
+    tealLight: '#E6F3F3',
+    backdropDark: '#000',
+    star: '#f39c12'
+  };
+  
