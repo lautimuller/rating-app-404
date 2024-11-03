@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, FlatList, Text, StyleSheet } from "react-native";
 import RepositoryItem from "../components/Repository/RepositoryItem";
 import { useSelectedRepositories } from "../context/SelectedRepositoriesContext";
 import { colors } from "../styles/colors";
+import { Repository } from "../utils/types";
+import ActionSheet from "../components/ActionSheet/ActionSheet";
 
 const SelectedScreen = () => {
-  const { selectedRepositories, toggleRepositorySelection } = useSelectedRepositories();
+  const { selectedRepositories, toggleRepositorySelection } =
+    useSelectedRepositories();
+  const [isActionSheetVisible, setIsActionSheetVisible] = useState(false);
+  const [repositoryToRemove, setRepositoryToRemove] =
+    useState<Repository | null>(null);
+
+  const handleRemoveRequest = (repository: Repository) => {
+    setRepositoryToRemove(repository);
+    setIsActionSheetVisible(true);
+  };
+
+  const confirmRemoveRepository = () => {
+    if (repositoryToRemove) {
+      toggleRepositorySelection(repositoryToRemove);
+      setRepositoryToRemove(null);
+    }
+    setIsActionSheetVisible(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -17,7 +36,7 @@ const SelectedScreen = () => {
               repository={item}
               isSelected={true}
               IsInSelectedScreen={true}
-              onRemove={toggleRepositorySelection}
+              onRemove={() => handleRemoveRequest(item)}
             />
           )}
           keyExtractor={(item) => item.id.toString()}
@@ -25,6 +44,17 @@ const SelectedScreen = () => {
       ) : (
         <Text style={styles.emptyText}>No items selected.</Text>
       )}
+
+      <ActionSheet
+        isVisible={isActionSheetVisible}
+        title="Confirm Removal"
+        description="Are you sure you want to remove this repository from the list?"
+        primaryButton={{ title: "Remove", onPress: confirmRemoveRepository }}
+        secondaryButton={{
+          title: "Cancel",
+          onPress: () => setIsActionSheetVisible(false),
+        }}
+      />
     </View>
   );
 };
