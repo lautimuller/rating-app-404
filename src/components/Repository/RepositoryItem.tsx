@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   repoOwner: {
-    color: colors.brown20,
+    color: colors.brown75,
     paddingVertical: 4,
   },
   stars: {
