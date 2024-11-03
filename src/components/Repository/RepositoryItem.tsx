@@ -24,28 +24,31 @@ const RepositoryItem: React.FC<RepositoryItemProps> = ({
 }) => {
   return (
     <TouchableOpacity
+      testID="repository-item"
       style={[styles.itemContainer, isSelected && styles.selectedItem]}
       onPress={() => onPress?.(repository.html_url)}
       onLongPress={() => onSelect?.(repository)}
     >
       <Image
+        testID="repository-avatar" // Agregado para pruebas
         source={{ uri: repository.owner.avatar_url }}
         style={styles.avatar}
       />
       <View style={styles.infoContainer}>
-        <Typography.Subtitle style={styles.repoName}>
+        <Typography.Subtitle testID="repository-name" style={styles.repoName}>
           {repository.name}
         </Typography.Subtitle>
-        <Typography.Label style={styles.repoOwner}>
+        <Typography.Label testID="repository-owner" style={styles.repoOwner}>
           {repository.owner.login}
         </Typography.Label>
-        <Typography.Label style={styles.stars}>
+        <Typography.Label testID="repository-stars" style={styles.stars}>
           {repository.stargazers_count} ⭐
         </Typography.Label>
       </View>
 
       {IsInSelectedScreen && (
         <IconButton
+          testID="repository-remove-button" // Agregado para pruebas
           icon="trash-can-outline"
           size={24}
           onPress={() => onRemove?.(repository)}

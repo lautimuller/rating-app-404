@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import React, { FC } from "react";
+import React from "react";
 import { ActivityIndicator } from "react-native-paper";
 import { colors } from "../../styles/colors";
 
