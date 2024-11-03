@@ -4,15 +4,17 @@ import { colors } from "../../styles/colors";
 import { Typography } from "../Typography/Typography";
 
 interface ErrorProps {
-  message: string | undefined;
+  message: string | undefined | null;
 }
 
 const Error: React.FC<ErrorProps> = ({ message }) => {
+  const errorMessage = message || "Error. Please Try Again";
+
   return (
     <View style={styles.container}>
       <View style={styles.errorTextContainer}>
         <Typography.Subtitle style={styles.errorText}>
-          {message}
+          {errorMessage}
         </Typography.Subtitle>
       </View>
     </View>
