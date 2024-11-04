@@ -40,4 +40,4 @@ Para instalar y ejecutar este proyecto, sigue estos pasos:
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/react-app-404.git
+   git clone https://github.com/lautimuller/rating-app-404.git
